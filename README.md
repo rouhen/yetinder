@@ -1,2 +1,1 @@
-# yetinder
-Yetinder app
+# Welcome to Yetinder!
