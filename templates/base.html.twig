@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{{ "Welcome to Yetinder"|trans }}{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="bg-blue-400 bg-fixed text-white min-h-screen">
+        <div class="wrapper p-5 py-10">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>

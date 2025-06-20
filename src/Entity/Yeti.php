@@ -29,6 +29,9 @@ class Yeti
     #[ORM\Column(type: "string", length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[ORM\Column(type: "integer", options: ["default" => 0])]
+    private ?int $votes = 0;
+
     #[ORM\Column(type: "datetime_immutable")]
     private ?\DateTimeImmutable $created = null;
 
@@ -104,6 +107,17 @@ class Yeti
     public function setImage(?string $image): self
     {
         $this->image = $image;
+        return $this;
+    }
+
+    public function getVotes(): ?int
+    {
+        return $this->votes;
+    }
+
+    public function setVotes(?int $votes): self
+    {
+        $this->votes = $votes;
         return $this;
     }
 
