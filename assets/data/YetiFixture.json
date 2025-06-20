@@ -1,0 +1,146 @@
+[
+    {
+        "id": 1,
+        "name": "Václav",
+        "description": "Vyskytuje se v Labském dole, je plachý, ale prý zpívá chorály do mlhy. Při úplňku si údajně čte z kroniky Vrchlabí.",
+        "image": "1.webp",
+        "height": 210,
+        "weight": 130
+    },
+    {
+        "id": 2,
+        "name": "Jaroslav",
+        "description": "Žije poblíž Pece pod Sněžkou, agresivní na snowboardisty. V zimě krade horký čaj z bufetů na sjezdovce.",
+        "image": "2.webp",
+        "height": 200,
+        "weight": 120
+    },
+    {
+        "id": 3,
+        "name": "Miloš",
+        "description": "Zdržuje se u Dvoraček, silně aromatický yeti. Umí napodobit troubení rolby a tak mate obsluhu.",
+        "image": "3.webp",
+        "height": 185,
+        "weight": 110
+    },
+    {
+        "id": 4,
+        "name": "Oldřich",
+        "description": "Obývá oblast kolem Harrachova, velmi plachý. Zajímavost: jeho srst údajně mění barvu podle počasí.",
+        "image": "4.webp",
+        "height": 195,
+        "weight": 105
+    },
+    {
+        "id": 5,
+        "name": "Zdeněk",
+        "description": "Přebývá na svazích kolem Rokytnice, nervózní z turistů. Rád šoupe nohama ve sněhu jako postrach běžkařů.",
+        "image": "5.webp",
+        "height": 180,
+        "weight": 100
+    },
+    {
+        "id": 6,
+        "name": "Karel",
+        "description": "Vyskytuje se v okolí Černé hory, mírně podrážděný. V mládí prý vyhrál místní soutěž v řevu.",
+        "image": "6.webp",
+        "height": 205,
+        "weight": 125
+    },
+    {
+        "id": 7,
+        "name": "Josef",
+        "description": "Stálý obyvatel Obřího dolu, velmi tichý. Prý si schovává šišky v baťohu nalezeném po turistech.",
+        "image": "7.webp",
+        "height": 200,
+        "weight": 135
+    },
+    {
+        "id": 8,
+        "name": "Ladislav",
+        "description": "Skrývá se v lesích nad Vrchlabím, s oblibou napodobuje zvuk motorových pil. Věčně zamrzlý vous.",
+        "image": "8.webp",
+        "height": 185,
+        "weight": 115
+    },
+    {
+        "id": 9,
+        "name": "Bohumil",
+        "description": "Žije v Modrém dole, velmi samotářský. Rád skládá kamenné mohyly a pak se na ně dívá jako na TV.",
+        "image": "9.webp",
+        "height": 190,
+        "weight": 128
+    },
+    {
+        "id": 10,
+        "name": "František",
+        "description": "Vyskytuje se u Jánských Lázní, mírumilovný. Je známý tím, že tančí na zmrzlém listí a dělá u toho zvuky DJ pultu.",
+        "image": "10.webp",
+        "height": 195,
+        "weight": 118
+    },
+    {
+        "id": 11,
+        "name": "Vladimír",
+        "description": "Přebývá u Žalého, večer se vkrádá k rozhledně a sleduje hvězdy. Přes den se maskuje jako sněhulák.",
+        "image": "11.webp",
+        "height": 198,
+        "weight": 122
+    },
+    {
+        "id": 12,
+        "name": "Stanislav",
+        "description": "Zdržuje se v údolí Bílého Labe, velmi teritoriální. Nenávidí sáňky, přetahuje se o ně s dětmi.",
+        "image": "12.webp",
+        "height": 202,
+        "weight": 120
+    },
+    {
+        "id": 13,
+        "name": "Antonín",
+        "description": "Bydlí v lese nad Špindlerovým Mlýnem, zpívá opery a vytváří ledové sochy. Velký fanoušek Smetany.",
+        "image": "13.webp",
+        "height": 210,
+        "weight": 140
+    },
+    {
+        "id": 14,
+        "name": "Rudolf",
+        "description": "Toulá se mezi Sněžkou a Luční boudou. Agresivní jen na selfie tyče. Ovládá zneškodňování GoPro kamer.",
+        "image": "14.webp",
+        "height": 192,
+        "weight": 117
+    },
+    {
+        "id": 15,
+        "name": "Petr",
+        "description": "Plachý jedinec z oblasti kolem Horních Míseček. Vyrábí sněhové pasti – pro zábavu, ne pro lov.",
+        "image": "15.webp",
+        "height": 183,
+        "weight": 101
+    },
+    {
+        "id": 16,
+        "name": "Tomáš",
+        "description": "Zdržuje se u pramene Labe. Má rád teplé ponožky a proto je krade sušícím se turistům ze zábradlí.",
+        "image": "16.webp",
+        "height": 186,
+        "weight": 104
+    },
+    {
+        "id": 17,
+        "name": "Roman",
+        "description": "Výskyt kolem Medvědína. Extrovertní, píská na borovicové větve. Rád nosí klobouk z mechů.",
+        "image": "17.webp",
+        "height": 187,
+        "weight": 109
+    },
+    {
+        "id": 18,
+        "name": "Lubomír",
+        "description": "Obývá oblast kolem Vosecké boudy. Ve sněhu kreslí symboly, které zatím nikdo nerozluštil. Možná to jsou recepty.",
+        "image": "18.webp",
+        "height": 200,
+        "weight": 123
+    }
+]
