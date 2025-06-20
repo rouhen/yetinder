@@ -1,6 +1,12 @@
 {
     "type": "project",
     "license": "proprietary",
+    "authors": [
+        {
+            "name": "Martin Rohan",
+            "email": "martinrohan@seznam.cz"
+        }
+    ],
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
@@ -14,9 +20,11 @@
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",
         "symfony/flex": "^2",
+        "symfony/form": "7.3.*",
         "symfony/framework-bundle": "7.3.*",
         "symfony/runtime": "7.3.*",
         "symfony/twig-bundle": "7.3.*",
+        "symfony/validator": "7.3.*",
         "symfony/webpack-encore-bundle": "^2.2",
         "symfony/yaml": "7.3.*"
     },
