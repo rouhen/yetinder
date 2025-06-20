@@ -29,6 +29,8 @@ class Yeti
     #[ORM\Column(type: "string", length: 255, nullable: true)]
     private ?string $image = null;
 
+    private ?File $imageFile = null;
+
     #[ORM\Column(type: "integer", options: ["default" => 0])]
     private ?int $votes = 0;
 
@@ -108,6 +110,16 @@ class Yeti
     {
         $this->image = $image;
         return $this;
+    }
+
+    public function setImageFile(?File $imageFile): void
+    {
+        $this->imageFile = $imageFile;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 
     public function getVotes(): ?int

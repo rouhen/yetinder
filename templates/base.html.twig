@@ -12,6 +12,13 @@
         {% endblock %}
     </head>
     <body class="bg-blue-400 bg-fixed text-white min-h-screen">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} my-4 px-4 py-3 rounded bg-green-100 text-green-800">
+                    {{ message|trans }}
+                </div>
+            {% endfor %}
+        {% endfor %}
         <div class="wrapper p-5 py-10">
             {% block body %}{% endblock %}
         </div>

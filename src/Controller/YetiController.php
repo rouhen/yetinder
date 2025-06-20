@@ -7,12 +7,18 @@ use App\Form\YetiType;
 use App\Repository\YetiRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class YetiController extends AbstractController
 {
+    public function __construct(private readonly TranslatorInterface $translator)
+    {
+    }
+
     #[Route('/', name: 'yeti_list')]
     public function index(YetiRepository $yetiRepository): Response
     {
@@ -31,11 +37,22 @@ final class YetiController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('imageFile')->getData();
+            if ($imageFile) {
+                $newFilename = uniqid().'.'.$imageFile->guessExtension();
+                $imageFile->move(
+                    $this->getParameter('yeti_images_directory'),
+                    $newFilename
+                );
+                $yeti->setImage($newFilename);
+            }
+
             $em->persist($yeti);
             $em->flush();
 
-            $this->addFlash('success', $this->trans('Yeti has been successfully created!'));
-            return $this->redirectToRoute('yeti_edit', ['id' => $yeti->getId()]);
+            $this->addFlash('success', $this->translator->trans('Yeti has been successfully created!'));
+            return $this->redirectToRoute('yeti_list');
         }
 
         return $this->render('yeti/edit.html.twig', [
@@ -51,10 +68,21 @@ final class YetiController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('imageFile')->getData();
+            if ($imageFile) {
+                $newFilename = uniqid().'.'.$imageFile->guessExtension();
+                $imageFile->move(
+                    $this->getParameter('yeti_images_directory'),
+                    $newFilename
+                );
+                $yeti->setImage($newFilename);
+            }
+
             $em->flush();
 
-            $this->addFlash('success', $this->trans('Yeti has been successfully updated!'));
-            return $this->redirectToRoute('yeti_edit', ['id' => $yeti->getId()]);
+            $this->addFlash('success', $this->translator->trans('Yeti has been successfully updated!'));
+            return $this->redirectToRoute('yeti_list');
         }
 
         return $this->render('yeti/edit.html.twig', [

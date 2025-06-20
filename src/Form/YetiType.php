@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Yeti;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -33,10 +34,14 @@ class YetiType extends AbstractType
                 'label' => 'Weight (kg)',
                 'required' => false,
             ])
-            ->add('image', TextType::class, [
-                'label' => 'Image filename',
+            ->add('imageFile', FileType::class, [
+                'label' => 'Obrázek',
+                'mapped' => false,
                 'required' => false,
-            ])
+                'attr' => [
+                    'accept' => 'image/*',
+                ],
+            ]);
         ;
     }
 
