@@ -1,4 +1,9 @@
-<div class="max-w-2xs bg-zinc-50 rounded-xl overflow-hidden shadow-lg text-black">
+<div class="relative max-w-2xs bg-zinc-50 rounded-xl overflow-hidden shadow-lg text-black">
+    <a href="{{ path('yeti_edit', { id: yeti.id }) }}"
+       class="absolute btn btn-blue bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-1 px-2 m-2 rounded-lg shadow-md transition disabled:opacity-50">
+        {{ "Edit"|trans }}
+    </a>
+
     <img class="w-full" src="{{ asset('img/yeti/' ~ yeti.image) }}" alt="{{ yeti.name }}">
     <div class="px-6 py-4">
         <div class="font-bold text-xl text-center mb-2">{{ yeti.name }}</div>
@@ -24,11 +29,11 @@
         {% endif %}
     </div>
     <div id="vote-{{ yeti.id }}" class="flex justify-center align-center gap-4 p-2">
-        <a href="{{ path('vote_up', { id: yeti.id }) }}" class="bg-green-500 text-white px-3 py-1 rounded-full text-xl font-bold hover:bg-green-600">
+        <a href="{{ path('yeti_vote_up', { id: yeti.id }) }}" class="bg-green-500 text-white px-3 py-1 rounded-full text-xl font-bold hover:bg-green-600">
             +
         </a>
         <span class="text-2xl font-semibold">{{ yeti.votes }}</span>
-        <a href="{{ path('vote_down', { id: yeti.id }) }}" class="bg-red-500 text-white px-3 py-1 rounded-full text-xl font-bold hover:bg-red-600">
+        <a href="{{ path('yeti_vote_down', { id: yeti.id }) }}" class="bg-red-500 text-white px-3 py-1 rounded-full text-xl font-bold hover:bg-red-600">
             –
         </a>
     </div>
