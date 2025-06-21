@@ -3,7 +3,11 @@
 {% block title %}{{ "Yetinder dashboard"|trans }}{% endblock %}
 
 {% block body %}
-    <h1 class="text-4xl text-white text-center font-bold mb-4">{{ "Welcome to Yetinder"|trans }}</h1>
+    <div class="align-center flex flex-col items-center justify-center">
+        <div class="max-w-xs px-6 py-2 bg-zinc-50 rounded-xl">
+            <img src="{{ asset('img/logo/yetinder-horizontal.svg') }}" alt="Yetinder" class="inline-block w-50">
+        </div>
+    </div>
 
     <div class="max-w-5xl mx-auto p-6">
         <h1 class="text-2xl font-bold mb-6">{{ "Dashboard"|trans }}</h1>
