@@ -3,19 +3,43 @@
 {% block title %}{{ "Yetinder dashboard"|trans }}{% endblock %}
 
 {% block body %}
-    <h1 class="text-4xl text-white text-center font-bold mb-4">{{ "Most wanted yetis"|trans }}</h1>
+    <h1 class="text-4xl text-white text-center font-bold mb-4">{{ "Welcome to Yetinder"|trans }}</h1>
 
-    <div class="flex mb-6 justify-end">
-        <a href="{{ path('yeti_create') }}"
-           class="btn btn-blue bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition disabled:opacity-50">
-            {{ "Add new yeti"|trans }}
-        </a>
-    </div>
-    <div class="flex flex-wrap gap-5 justify-center">
-        {% for yeti in yetis %}
-            {% include 'components/card.html.twig' with {'yeti': yeti, 'index': loop.index} %}
-        {% else %}
-            <p class="text-2xl text-white text-center">{{ "No yetis found"|trans }}</p>
-        {% endfor %}
+    <div class="max-w-5xl mx-auto p-6">
+        <h1 class="text-2xl font-bold mb-6">{{ "Dashboard"|trans }}</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+                <span class="text-4xl font-bold text-blue-700">{{ totalYeti }}</span>
+                <span class="text-gray-600 mt-2">{{ "Total yetis"|trans }}</span>
+            </div>
+            <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+                <span class="text-4xl font-bold text-purple-700">{{ newYetisLastWeek }}</span>
+                <span class="text-gray-600 mt-2">{{ "New yetis in the last week"|trans }}</span>
+            </div>
+            <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+                <span class="text-3xl font-bold text-orange-700">{{ avgYetiVotes|number_format(2) }}</span>
+                <span class="text-gray-600 mt-2">{{ "Average yeti rating"|trans }}</span>
+            </div>
+        </div>
+
+        <div class="bg-white text-black rounded-xl shadow p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">{{ "Top 5 most popular yetis"|trans }}</h2>
+            <ul>
+                {% for yeti in topYetis %}
+                    <li class="flex items-center mb-3">
+                        {% if yeti.image %}
+                            <img src="{{ asset('img/yeti/' ~ yeti.image) }}" alt="{{ yeti.name }}" class="w-10 h-10 object-cover rounded-full mr-4">
+                        {% else %}
+                            <img src="{{ asset('img/yeti/default.webp') }}" alt="{{ yeti.name }}" class="w-10 h-10 object-cover rounded-full mr-4">
+                        {% endif %}
+                        <span class="font-medium">{{ yeti.name }}</span>
+                        <span class="ml-auto text-gray-500">{{ yeti.votes }} &hearts; </span>
+                    </li>
+                {% else %}
+                    <li class="text-gray-400">{{ "No yetis found."|trans }}</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 {% endblock %}

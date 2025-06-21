@@ -20,11 +20,24 @@ final class YetiController extends AbstractController
     }
 
     #[Route('/', name: 'yeti_list')]
-    public function index(YetiRepository $yetiRepository): Response
+    public function dashboard(YetiRepository $yetiRepository): Response
+    {
+        $previousWeek = new \DateTime('-1 week');
+
+        return $this->render('yeti/index.html.twig', [
+            'totalYeti' => $yetiRepository->count([]),
+            'newYetisLastWeek' => $yetiRepository->countNewSince($previousWeek),
+            'topYetis' => $yetiRepository->findTopByVotes(5),
+            'avgYetiVotes' => $yetiRepository->getAverageVotes()
+        ]);
+    }
+
+    #[Route('/best', name: 'yeti_best_of')]
+    public function bestOf(YetiRepository $yetiRepository): Response
     {
         $yetis = $yetiRepository->findBy([], ['votes' => 'DESC'], 10) ?: [];
 
-        return $this->render('yeti/index.html.twig', [
+        return $this->render('yeti/bestOf.html.twig', [
             'yetis' => $yetis,
         ]);
     }
