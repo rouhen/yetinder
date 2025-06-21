@@ -39,6 +39,7 @@
                 }
             }) }}
 
+            <img class="block w-full h-full object-cover" src="{{ asset('img/yeti/' ~ yeti.image) }}" alt="{{ yeti.name }}">
             {{ form_row(form.imageFile, {
                 'label_attr': {
                     'class': 'block text-black font-bold mb-2'
