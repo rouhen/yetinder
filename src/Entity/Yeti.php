@@ -14,33 +14,33 @@ class Yeti
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: "string", length: 255)]
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(type: "string", length: 255)]
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(type: "float", nullable: true, options: ["default" => 0.0])]
+    #[ORM\Column(type: 'float', nullable: true, options: ['default' => 0.0])]
     private ?float $height = null;
 
-    #[ORM\Column(type: "float", nullable: true, options: ["default" => 0.0])]
+    #[ORM\Column(type: 'float', nullable: true, options: ['default' => 0.0])]
     private ?float $weight = null;
 
-    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $image = null;
 
     private ?File $imageFile = null;
 
-    #[ORM\Column(type: "integer", options: ["default" => 0])]
+    #[ORM\Column(type: 'integer', options: ['default' => 0])]
     private ?int $votes = 0;
 
-    #[ORM\Column(type: "datetime", name: "vote_timestamp", nullable: true)]
+    #[ORM\Column(type: 'datetime', name: 'vote_timestamp', nullable: true)]
     private ?\DateTimeInterface $voteTimestamp = null;
 
-    #[ORM\Column(type: "datetime_immutable")]
+    #[ORM\Column(type: 'datetime_immutable')]
     private ?\DateTimeImmutable $created = null;
 
-    #[ORM\Column(type: "datetime")]
+    #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $modified = null;
 
     public function __construct()
@@ -68,6 +68,7 @@ class Yeti
     public function setName(?string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -79,6 +80,7 @@ class Yeti
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -90,6 +92,7 @@ class Yeti
     public function setHeight(?float $height): self
     {
         $this->height = $height;
+
         return $this;
     }
 
@@ -101,6 +104,7 @@ class Yeti
     public function setWeight(?float $weight): self
     {
         $this->weight = $weight;
+
         return $this;
     }
 
@@ -112,6 +116,7 @@ class Yeti
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
         return $this;
     }
 
@@ -134,6 +139,7 @@ class Yeti
     {
         $this->votes = $votes;
         $this->voteTimestamp = new \DateTime();
+
         return $this;
     }
 

@@ -70,6 +70,7 @@
         }
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.75",
         "phpunit/phpunit": "^11.5",
         "symfony/maker-bundle": "^1.63"
     },
@@ -93,6 +94,6 @@
         "fixtures": "docker compose exec php php bin/console doctrine:fixtures:load --no-interaction",
         "dump-db": "docker compose exec database pg_dump -U app -d app > _dump.sql",
         "clear-db": "docker compose exec database psql -U app -d app -c 'DROP SCHEMA public CASCADE; CREATE SCHEMA public;'",
-        "load-db": "docker compose exec -T database psql -U app -d app < _dump.sql",
+        "load-db": "docker compose exec -T database psql -U app -d app < _dump.sql"
     }
 }

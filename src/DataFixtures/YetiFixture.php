@@ -10,7 +10,7 @@ class YetiFixture extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $jsonFile = __DIR__ . '/../../assets/data/YetiFixture.json';
+        $jsonFile = __DIR__.'/../../assets/data/YetiFixture.json';
         if (!file_exists($jsonFile)) {
             throw new \RuntimeException("Could not find JSON file: $jsonFile");
         }

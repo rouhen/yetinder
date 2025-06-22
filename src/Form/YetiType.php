@@ -6,8 +6,8 @@ use App\Entity\Yeti;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,7 +21,7 @@ class YetiType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Enter the name of the Yeti',
                 ],
-                'required' => true
+                'required' => true,
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
@@ -44,7 +44,7 @@ class YetiType extends AbstractType
             ])
             ->add('votes', IntegerType::class, [
                 'label' => 'Votes',
-                'required' => false
+                'required' => false,
             ])
         ;
     }

@@ -18,10 +18,12 @@ final class YetiController extends AbstractController
     public function __construct(private readonly TranslatorInterface $translator)
     {
     }
+
     #[Route('/', name: 'homepage')]
     public function homepage(Request $request)
     {
         $locale = $request->getLocale() ?? $this->getParameter('kernel.default_locale');
+
         return $this->redirectToRoute('yeti_dashboard', ['_locale' => $locale]);
     }
 
@@ -34,7 +36,7 @@ final class YetiController extends AbstractController
             'totalYeti' => $yetiRepository->count([]),
             'newYetisLastWeek' => $yetiRepository->countNewSince($previousWeek),
             'topYetis' => $yetiRepository->findTopByVotes(5),
-            'avgYetiVotes' => $yetiRepository->getAverageVotes()
+            'avgYetiVotes' => $yetiRepository->getAverageVotes(),
         ]);
     }
 
@@ -61,6 +63,7 @@ final class YetiController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', $this->translator->trans('Yeti has been successfully created!'));
+
             return $this->redirectToRoute('yeti_vote', ['_locale' => $request->getLocale()]);
         }
 
@@ -91,6 +94,7 @@ final class YetiController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', $this->translator->trans('Yeti has been successfully updated!'));
+
             return $this->redirectToRoute('yeti_vote', ['_locale' => $request->getLocale()]);
         }
 

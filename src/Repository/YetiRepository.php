@@ -52,7 +52,7 @@ class YetiRepository extends ServiceEntityRepository
      */
     public function countNewSince(\DateTimeInterface $since): int
     {
-        return (int)$this->createQueryBuilder('y')
+        return (int) $this->createQueryBuilder('y')
             ->select('count(y.id)')
             ->where('y.created >= :since')
             ->setParameter('since', $since)
@@ -65,7 +65,7 @@ class YetiRepository extends ServiceEntityRepository
      */
     public function getAverageVotes(): float
     {
-        return (float)$this->createQueryBuilder('y')
+        return (float) $this->createQueryBuilder('y')
             ->select('AVG(y.votes)')
             ->where('y.votes != 0')
             ->getQuery()
