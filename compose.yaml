@@ -24,6 +24,7 @@ services:
       context: .
       dockerfile: ./docker/php/Dockerfile
     volumes:
+      - ./docker/php/custom-php.ini:/usr/local/etc/php/conf.d/custom-php.ini
       - ./:/var/www/html:rw,cached
     depends_on:
       - database
