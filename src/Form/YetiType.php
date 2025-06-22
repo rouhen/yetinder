@@ -41,7 +41,11 @@ class YetiType extends AbstractType
                 'attr' => [
                     'accept' => 'image/*',
                 ],
-            ]);
+            ])
+            ->add('votes', IntegerType::class, [
+                'label' => 'Votes',
+                'required' => false
+            ])
         ;
     }
 

@@ -19,7 +19,7 @@ final class YetiController extends AbstractController
     {
     }
 
-    #[Route('/', name: 'yeti_list')]
+    #[Route('/', name: 'yeti_dashboard')]
     public function dashboard(YetiRepository $yetiRepository): Response
     {
         $previousWeek = new \DateTime('-1 week');
@@ -55,7 +55,7 @@ final class YetiController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', $this->translator->trans('Yeti has been successfully created!'));
-            return $this->redirectToRoute('yeti_list');
+            return $this->redirectToRoute('yeti_vote');
         }
 
         return $this->render('yeti/edit.html.twig', [
@@ -85,7 +85,7 @@ final class YetiController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', $this->translator->trans('Yeti has been successfully updated!'));
-            return $this->redirectToRoute('yeti_list');
+            return $this->redirectToRoute('yeti_vote');
         }
 
         return $this->render('yeti/edit.html.twig', [

@@ -11,15 +11,15 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class="bg-gradient-to-r from-blue-500 to-purple-500 text-white min-h-screen">
+    <body class="bg-gradient-to-r from-blue-800 to-purple-300 text-white min-h-screen">
         <nav class="bg-gray-800 shadow mb-6">
             <div class="max-w-7xl mx-auto px-1">
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
-                        <a href="{{ path('yeti_list') }}" class="text-white font-bold text-xl mr-2">
+                        <a href="{{ path('yeti_dashboard') }}" class="text-white font-bold text-xl mr-2">
                             <img src="{{ asset('img/logo/yetinder-small.svg') }}" alt="Yetinder" class="inline-block w-12 h-12 mr-4">
                         </a>
-                        <a href="{{ path('yeti_list') }}" class="text-gray-300 hover:text-white px-4 py-2 rounded-md text-md font-medium">
+                        <a href="{{ path('yeti_dashboard') }}" class="text-gray-300 hover:text-white px-4 py-2 rounded-md text-md font-medium">
                             {{ "Dashboard"|trans }}
                         </a>
                         <a href="{{ path('yeti_best_of') }}" class="text-gray-300 hover:text-white px-4 py-2 rounded-md text-md font-medium">

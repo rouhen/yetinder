@@ -25,6 +25,7 @@ class YetiFixture extends Fixture
             $yeti->setHeight($row['height'] ?? null);
             $yeti->setWeight($row['weight'] ?? null);
             $yeti->setImage($row['image'] ?? null);
+            $yeti->setVotes($row['votes'] ?? 0);
 
             $manager->persist($yeti);
         }
