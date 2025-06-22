@@ -34,6 +34,9 @@ class Yeti
     #[ORM\Column(type: "integer", options: ["default" => 0])]
     private ?int $votes = 0;
 
+    #[ORM\Column(type: "datetime", name: "vote_timestamp", nullable: true)]
+    private ?\DateTimeInterface $voteTimestamp = null;
+
     #[ORM\Column(type: "datetime_immutable")]
     private ?\DateTimeImmutable $created = null;
 
@@ -130,7 +133,13 @@ class Yeti
     public function setVotes(?int $votes): self
     {
         $this->votes = $votes;
+        $this->voteTimestamp = new \DateTime();
         return $this;
+    }
+
+    public function getVoteTimestamp(): ?\DateTimeInterface
+    {
+        return $this->voteTimestamp;
     }
 
     public function getCreated(): ?\DateTimeImmutable
