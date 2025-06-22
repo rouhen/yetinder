@@ -17,6 +17,25 @@ class YetiRepository extends ServiceEntityRepository
     }
 
     /**
+     * Returns the next Yeti to be voted on.
+     */
+    public function findYetiForVote(): ?Yeti
+    {
+        $candidates = $this->createQueryBuilder('y')
+            ->orderBy('CASE WHEN y.voteTimestamp IS NULL THEN 0 ELSE 1 END', 'ASC')
+            ->addOrderBy('y.voteTimestamp', 'ASC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+
+        if (!$candidates) {
+            return null;
+        }
+
+        return $candidates[array_rand($candidates)];
+    }
+
+    /**
      * Returns the top yetis ordered by their votes.
      */
     public function findTopByVotes(int $limit = 10): array

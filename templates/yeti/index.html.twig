@@ -10,8 +10,6 @@
     </div>
 
     <div class="max-w-5xl mx-auto p-6">
-        <h1 class="text-2xl font-bold mb-6">{{ "Dashboard"|trans }}</h1>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
                 <span class="text-4xl font-bold text-blue-700">{{ totalYeti }}</span>
@@ -28,7 +26,7 @@
         </div>
 
         <div class="bg-white text-black rounded-xl shadow p-6 mb-8">
-            <h2 class="text-xl font-semibold mb-4">{{ "Top 5 most popular yetis"|trans }}</h2>
+            <div class="text-xl font-semibold mb-4">{{ "Most wanted yetis"|trans }}</div>
             <ul>
                 {% for yeti in topYetis %}
                     <li class="flex items-center mb-3">
@@ -44,6 +42,9 @@
                     <li class="text-gray-400">{{ "No yetis found."|trans }}</li>
                 {% endfor %}
             </ul>
+            <div class="mt-4 text-sm text-gray-500">
+                <a href="{{ path('yeti_best_of') }}" class="text-blue-600 hover:underline">{{ "View all yetis"|trans }}</a>
+            </div>
         </div>
     </div>
 {% endblock %}

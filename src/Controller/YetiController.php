@@ -32,16 +32,6 @@ final class YetiController extends AbstractController
         ]);
     }
 
-    #[Route('/best', name: 'yeti_best_of')]
-    public function bestOf(YetiRepository $yetiRepository): Response
-    {
-        $yetis = $yetiRepository->findBy([], ['votes' => 'DESC'], 10) ?: [];
-
-        return $this->render('yeti/bestOf.html.twig', [
-            'yetis' => $yetis,
-        ]);
-    }
-
     #[Route('/yeti/new', name: 'yeti_create', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $em): Response
     {
@@ -104,21 +94,41 @@ final class YetiController extends AbstractController
         ]);
     }
 
-    #[Route('/vote/up/{id}', name: 'yeti_vote_up', methods: ['GET'])]
+    #[Route('/yeti/vote', name: 'yeti_vote')]
+    public function vote(YetiRepository $yetiRepository): Response
+    {
+        $yeti = $yetiRepository->findYetiForVote();
+
+        return $this->render('yeti/vote.html.twig', [
+            'yeti' => $yeti,
+        ]);
+    }
+
+    #[Route('/yeti/{id}/vote/up', name: 'yeti_vote_up', methods: ['GET'])]
     public function voteUp(Yeti $yeti, EntityManagerInterface $em): Response
     {
         $yeti->setVotes($yeti->getVotes() + 1);
         $em->flush();
 
-        return $this->redirect($referer ?? $this->generateUrl('yeti_list'));
+        return $this->redirect($referer ?? $this->generateUrl('yeti_vote'));
     }
 
-    #[Route('/vote/down/{id}', name: 'yeti_vote_down', methods: ['GET'])]
+    #[Route('/yeti/{id}/vote/dowm', name: 'yeti_vote_down', methods: ['GET'])]
     public function voteDown(Yeti $yeti, EntityManagerInterface $em): Response
     {
         $yeti->setVotes($yeti->getVotes() - 1);
         $em->flush();
 
-        return $this->redirect($referer ?? $this->generateUrl('yeti_list'));
+        return $this->redirect($referer ?? $this->generateUrl('yeti_vote'));
+    }
+
+    #[Route('/yeti/best', name: 'yeti_best_of')]
+    public function bestOf(YetiRepository $yetiRepository): Response
+    {
+        $yetis = $yetiRepository->findBy([], ['votes' => 'DESC'], 10) ?: [];
+
+        return $this->render('yeti/bestOf.html.twig', [
+            'yetis' => $yetis,
+        ]);
     }
 }
