@@ -60,18 +60,6 @@
         "symfony/polyfill-php81": "*",
         "symfony/polyfill-php82": "*"
     },
-    "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        },
-        "post-install-cmd": [
-            "@auto-scripts"
-        ],
-        "post-update-cmd": [
-            "@auto-scripts"
-        ]
-    },
     "conflict": {
         "symfony/symfony": "*"
     },
@@ -84,5 +72,24 @@
     "require-dev": {
         "phpunit/phpunit": "^11.5",
         "symfony/maker-bundle": "^1.63"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ],
+        "migrate": "docker compose exec php php bin/console doctrine:migrations:migrate --no-interaction",
+        "migrate:diff": "docker compose exec php php bin/console doctrine:migrations:diff",
+        "migrate:status": "docker compose exec php php bin/console doctrine:migrations:status",
+        "migrate:up": "docker compose exec php php bin/console doctrine:migrations:migrate --no-interaction",
+        "migrate:down": "docker compose exec php php bin/console doctrine:migrations:migrate prev --no-interaction",
+        "schema:update": "docker compose exec php php bin/console doctrine:schema:update --force",
+        "fixtures": "docker compose exec php php bin/console doctrine:fixtures:load --no-interaction"
     }
 }
