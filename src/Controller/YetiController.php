@@ -20,11 +20,9 @@ final class YetiController extends AbstractController
     }
 
     #[Route('/', name: 'homepage')]
-    public function homepage(Request $request)
+    public function homepage(Request $request): Response
     {
-        $locale = $request->getLocale() ?? $this->getParameter('kernel.default_locale');
-
-        return $this->redirectToRoute('yeti_dashboard', ['_locale' => $locale]);
+        return $this->redirectToRoute('yeti_dashboard', ['_locale' => $request->getLocale()]);
     }
 
     #[Route('/{_locale}/', name: 'yeti_dashboard', requirements: ['_locale' => 'cs|en'], defaults: ['_locale' => 'cs'])]
@@ -48,7 +46,7 @@ final class YetiController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $imageFile */
+            /** @var UploadedFile|null $imageFile */
             $imageFile = $form->get('imageFile')->getData();
             if ($imageFile) {
                 $newFilename = uniqid().'.'.$imageFile->guessExtension();
@@ -80,7 +78,7 @@ final class YetiController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $imageFile */
+            /** @var UploadedFile|null $imageFile */
             $imageFile = $form->get('imageFile')->getData();
             if ($imageFile) {
                 $newFilename = uniqid().'.'.$imageFile->guessExtension();

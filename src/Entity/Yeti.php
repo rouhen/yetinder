@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\YetiRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: YetiRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -12,7 +13,7 @@ class Yeti
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id = 0;
 
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $name = null;

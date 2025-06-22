@@ -18,6 +18,8 @@ class YetiRepository extends ServiceEntityRepository
 
     /**
      * Returns the next Yeti to be voted on.
+     *
+     * @return Yeti|null a Yeti entity that is eligible for voting, or null if no such Yeti exists
      */
     public function findYetiForVote(): ?Yeti
     {
@@ -37,6 +39,10 @@ class YetiRepository extends ServiceEntityRepository
 
     /**
      * Returns the top yetis ordered by their votes.
+     *
+     * @param int $limit the maximum number of yetis to return
+     *
+     * @return Yeti[] an array of Yeti entities sorted by votes in descending order
      */
     public function findTopByVotes(int $limit = 10): array
     {
@@ -49,6 +55,10 @@ class YetiRepository extends ServiceEntityRepository
 
     /**
      * Returns the total count of yetis registered since the given date.
+     *
+     * @param \DateTimeInterface $since the date from which to count new yetis
+     *
+     * @return int the count of new yetis since the specified date
      */
     public function countNewSince(\DateTimeInterface $since): int
     {
@@ -62,6 +72,8 @@ class YetiRepository extends ServiceEntityRepository
 
     /**
      * Returns the average rating of all yetis.
+     *
+     * @return float the average number of votes across all yetis, excluding those with zero votes
      */
     public function getAverageVotes(): float
     {
