@@ -27,12 +27,6 @@ services:
       - ./:/var/www/html:rw,cached
     depends_on:
       - database
-    command: >
-      sh -c "
-      php bin/console doctrine:migrations:migrate --no-interaction &&
-      php bin/console doctrine:fixtures:load --no-interaction &&
-      php-fpm
-      "
 
   nginx:
     image: nginx:alpine
