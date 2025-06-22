@@ -67,6 +67,7 @@ class YetiRepository extends ServiceEntityRepository
     {
         return (float)$this->createQueryBuilder('y')
             ->select('AVG(y.votes)')
+            ->where('y.votes != 0')
             ->getQuery()
             ->getSingleScalarResult();
     }
