@@ -1,5 +1,9 @@
 # Welcome to Yetinder!
 ## How to start
+- Install Composer dependencies:
+  ```bash
+  composer install
+  ```
 - Start Docker:
   ```bash
   docker compose up
