@@ -90,6 +90,9 @@
         "migrate:up": "docker compose exec php php bin/console doctrine:migrations:migrate --no-interaction",
         "migrate:down": "docker compose exec php php bin/console doctrine:migrations:migrate prev --no-interaction",
         "schema:update": "docker compose exec php php bin/console doctrine:schema:update --force",
-        "fixtures": "docker compose exec php php bin/console doctrine:fixtures:load --no-interaction"
+        "fixtures": "docker compose exec php php bin/console doctrine:fixtures:load --no-interaction",
+        "dump-db": "docker compose exec database pg_dump -U app -d app > _dump.sql",
+        "clear-db": "docker compose exec database psql -U app -d app -c 'DROP SCHEMA public CASCADE; CREATE SCHEMA public;'",
+        "load-db": "docker compose exec -T database psql -U app -d app < _dump.sql",
     }
 }

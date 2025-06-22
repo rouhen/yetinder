@@ -35,7 +35,7 @@ class YetiType extends AbstractType
                 'required' => false,
             ])
             ->add('imageFile', FileType::class, [
-                'label' => 'Obrázek',
+                'label' => 'Image',
                 'mapped' => false,
                 'required' => false,
                 'attr' => [

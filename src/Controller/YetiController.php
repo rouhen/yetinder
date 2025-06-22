@@ -18,8 +18,14 @@ final class YetiController extends AbstractController
     public function __construct(private readonly TranslatorInterface $translator)
     {
     }
+    #[Route('/', name: 'homepage')]
+    public function homepage(Request $request)
+    {
+        $locale = $request->getLocale() ?? $this->getParameter('kernel.default_locale');
+        return $this->redirectToRoute('yeti_dashboard', ['_locale' => $locale]);
+    }
 
-    #[Route('/', name: 'yeti_dashboard')]
+    #[Route('/{_locale}/', name: 'yeti_dashboard', requirements: ['_locale' => 'cs|en'], defaults: ['_locale' => 'cs'])]
     public function dashboard(YetiRepository $yetiRepository): Response
     {
         $previousWeek = new \DateTime('-1 week');
@@ -32,7 +38,7 @@ final class YetiController extends AbstractController
         ]);
     }
 
-    #[Route('/yeti/new', name: 'yeti_create', methods: ['GET', 'POST'])]
+    #[Route('/{_locale}/yeti/new', name: 'yeti_create', methods: ['GET', 'POST'], requirements: ['_locale' => 'cs|en'], defaults: ['_locale' => 'cs'])]
     public function new(Request $request, EntityManagerInterface $em): Response
     {
         $yeti = new Yeti();
@@ -55,7 +61,7 @@ final class YetiController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', $this->translator->trans('Yeti has been successfully created!'));
-            return $this->redirectToRoute('yeti_vote');
+            return $this->redirectToRoute('yeti_vote', ['_locale' => $request->getLocale()]);
         }
 
         return $this->render('yeti/edit.html.twig', [
@@ -64,7 +70,7 @@ final class YetiController extends AbstractController
         ]);
     }
 
-    #[Route('/yeti/{id}/edit', name: 'yeti_edit', methods: ['GET', 'POST'])]
+    #[Route('/{_locale}/yeti/{id}/edit', name: 'yeti_edit', methods: ['GET', 'POST'], requirements: ['_locale' => 'cs|en'], defaults: ['_locale' => 'cs'])]
     public function edit(Request $request, Yeti $yeti, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(YetiType::class, $yeti);
@@ -85,7 +91,7 @@ final class YetiController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', $this->translator->trans('Yeti has been successfully updated!'));
-            return $this->redirectToRoute('yeti_vote');
+            return $this->redirectToRoute('yeti_vote', ['_locale' => $request->getLocale()]);
         }
 
         return $this->render('yeti/edit.html.twig', [
@@ -94,7 +100,7 @@ final class YetiController extends AbstractController
         ]);
     }
 
-    #[Route('/yeti/vote', name: 'yeti_vote')]
+    #[Route('/{_locale}/yeti/vote', name: 'yeti_vote', requirements: ['_locale' => 'cs|en'], defaults: ['_locale' => 'cs'])]
     public function vote(YetiRepository $yetiRepository): Response
     {
         $yeti = $yetiRepository->findYetiForVote();
@@ -104,25 +110,25 @@ final class YetiController extends AbstractController
         ]);
     }
 
-    #[Route('/yeti/{id}/vote/up', name: 'yeti_vote_up', methods: ['GET'])]
-    public function voteUp(Yeti $yeti, EntityManagerInterface $em): Response
+    #[Route('/{_locale}/yeti/{id}/vote/up', name: 'yeti_vote_up', methods: ['GET'], requirements: ['_locale' => 'cs|en'], defaults: ['_locale' => 'cs'])]
+    public function voteUp(Yeti $yeti, EntityManagerInterface $em, Request $request): Response
     {
         $yeti->setVotes($yeti->getVotes() + 1);
         $em->flush();
 
-        return $this->redirect($referer ?? $this->generateUrl('yeti_vote'));
+        return $this->redirect($request->headers->get('referer') ?? $this->generateUrl('yeti_vote', ['_locale' => $request->getLocale()]));
     }
 
-    #[Route('/yeti/{id}/vote/dowm', name: 'yeti_vote_down', methods: ['GET'])]
-    public function voteDown(Yeti $yeti, EntityManagerInterface $em): Response
+    #[Route('/{_locale}/yeti/{id}/vote/dowm', name: 'yeti_vote_down', methods: ['GET'], requirements: ['_locale' => 'cs|en'], defaults: ['_locale' => 'cs'])]
+    public function voteDown(Yeti $yeti, EntityManagerInterface $em, Request $request): Response
     {
         $yeti->setVotes($yeti->getVotes() - 1);
         $em->flush();
 
-        return $this->redirect($referer ?? $this->generateUrl('yeti_vote'));
+        return $this->redirect($request->headers->get('referer') ?? $this->generateUrl('yeti_vote', ['_locale' => $request->getLocale()]));
     }
 
-    #[Route('/yeti/best', name: 'yeti_best_of')]
+    #[Route('/{_locale}/yeti/best', name: 'yeti_best_of', requirements: ['_locale' => 'cs|en'], defaults: ['_locale' => 'cs'])]
     public function bestOf(YetiRepository $yetiRepository): Response
     {
         $yetis = $yetiRepository->findBy([], ['votes' => 'DESC'], 10) ?: [];

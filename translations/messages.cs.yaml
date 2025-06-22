@@ -1,21 +1,30 @@
-
-Add new yeti: Přidat nového yetiho
-Average yeti rating: Průměrné hodnocení yetiů
-Create yeti: Vytvořit yetiho
-Dashboard: Přehled
-Edit yeti: Upravit yetiho
-Editing yeti: Úprava yetiho
-Height: Výška
-Most wanted yetis: Nejžádanější yetiové
-New yeti: Nový yeti
-New yetis in the last week: Nových yetiů za poslední týden
-No yetis found: Žádný yetiové nenalezeni
-Save changes: Uložit změny
-Top 5 most popular yetis: 5 nejoblíbenějších yetiů
-Total yetis: Celkový počet yetiů
-Weight: Váha
-Welcome to yetinder: Vítejte na Yetinderu
-Yeti has been successfully created!: Yeti byl úspěšně vytvořen!
-Yeti has been successfully updated!: Yeti byl úspěšně aktualizován!
-Yetinder dashboard: Yetinder přehled
-Yetinder user: Uživatel Yetinderu
+Average yeti rating: "Průměrné hodnocení yetiů"
+Create yeti: "Vytvořit yetiho"
+Dashboard: "Přehled"
+Best yetis: "Nejlepší yetiové"
+Vote: "Hlasovat"
+Add new yeti: "Přidat yetiho"
+Edit yeti: "Upravit yetiho"
+Editing yeti: "Úprava yetiho"
+Height: "Výška"
+Most wanted yetis: "Nejžádanější yetiové"
+New yeti: "Nový yeti"
+New yetis in the last week: "Nových yetiů za poslední týden"
+No yetis found: "Žádný yetiové nenalezeni"
+Save changes: "Uložit změny"
+Top 5 most popular yetis: "5 nejoblíbenějších yetiů"
+Total yetis: "Celkový počet yetiů"
+Weight: "Váha"
+Welcome to yetinder: "Vítejte na Yetinderu"
+Yeti has been successfully created!: "Yeti byl úspěšně vytvořen!"
+Yeti has been successfully updated!: "Yeti byl úspěšně aktualizován!"
+Yetinder dashboard: "Yetinder přehled"
+Yetinder user: "Uživatel Yetinderu"
+View more: "Zobrazit více"
+Edit: "Upravit"
+Name: "Jméno"
+Description: "Popis"
+Image: "Obrázek"
+Height (cm): "Výška (cm)"
+Weight (kg): "Váha (kg)"
+Votes: "Hlasů"
